@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <pthread.h>
+
+pthread_t A, B, C;
+void *threadA(){
+printf("A");
+}
+
+void *threadB(){
+printf("B");
+}
+
+void *threadC(){
+printf("C");
+}
+
+int main(){
+pthread_create(&A, NULL, threadA, NULL);
+sleep(0);
+pthread_create(&B, NULL, threadB, NULL);
+sleep(1);
+pthread_create(&C, NULL, threadC, NULL);
+sleep(2);
+printf("\n");
+}

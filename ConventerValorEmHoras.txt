@@ -1,0 +1,8 @@
+int t,h,r,tm,ts;
+    scanf("%d", &t);
+    h = t/3600;
+    r = t%3600;
+    tm = r/60;
+    ts = r%60;
+
+    printf("%d hora(s) e %d minuto(s) e %d segundo(s)\n", h, tm, ts);

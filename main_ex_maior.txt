@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+float maior(float x, float y);
+char v = 'a';
+int main()
+{
+    float a,b,val;
+    scanf("%f%f",&a,&b);
+    val = maior(a,b);
+    printf("maior: %f\n",val);
+    printf("maior: %f\n",maior(a,b));
+    return 0;
+}
+float maior(float x, float y)
+{
+    if(x>y)
+        return x;
+    else
+        return y;
+}

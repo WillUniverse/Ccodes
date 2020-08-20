@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+double media(double v[],int dim);
+double desvio(double v[],int dim);
+int main()
+{
+    double A[5]={1,2,3,4,5};
+    double valmed,valdesv;
+    valmed = media(A,5);
+    valdesv = desvio(A,5);
+    printf("media: %lf\n",valmed);
+    printf("desvio: %lf\n",valdesv);
+    return 0;
+}
+
+double media(double v[],int dim)
+{
+    int i;
+    double soma;
+    for(soma=0,i=0;i<dim;i++)
+        soma+=v[i];
+    return soma/dim;
+}
+double desvio(double v[],int dim)
+{
+    int i;
+    double soma,m;
+    m = media(v,dim);
+    for(soma=0,i=0;i<dim;i++)
+        soma+=(v[i]-m)*(v[i]-m);
+    return sqrt(soma/dim);
+}

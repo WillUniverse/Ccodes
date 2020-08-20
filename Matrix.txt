@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    /*inicialização da matriz,
+      cada linha está envolvida por um par de {}*/
+    float M[4][4]={{1,2,3,4},{5,6,7,8},
+                {9,10,11,12},{13,14,15,16}};
+    float V[4];
+    int i,j,soma;
+    /* exibindo M*/
+    for(i=0;i<4;i++)
+    {
+      for(j=0;j<4;j++)
+            printf("M[%d][%d]: %f  ",i,j,M[i][j]);
+      printf("\n");
+    }
+    /* diagonal principal: M[0][0],M[1][1],M[2][2],
+        M[3][3],indice da linha igual ao indice da coluna*/
+    printf("\nDiagonal Principal\n");
+    for(i=0;i<4;i++)
+        printf("M[%d][%d]: %f\n",i,i,M[i][i]);
+     /* diagonal secundaria:M[3][0],M[2][1],M[1][2],
+        M[0][3],indice da linha decresce e indice da coluna
+        cresce, linearmente */
+    printf("\nDiagonal Secundaria\n");
+    for(i=3;i>-1;i--)
+        printf("M[%d][%d]: %f\n",i,3-i,M[i][3-i]);
+     /* calculando a soma em cada linha e armazenando
+        cada valor de soma no vetor V */
+    for(i=0;i<4;i++)
+    {
+        for(soma=0,j=0;j<4;j++)
+            soma+=M[i][j];
+        V[i]=soma;
+    }
+    /* exibindo o vetor V */
+    printf("\nExibindo V\n");
+    for(i=0;i<4;i++)
+    {
+        printf("V[%d]: %f  ",i,V[i]);
+    }
+    printf("\n");
+    return 0;
+}

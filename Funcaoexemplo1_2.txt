@@ -1,0 +1,27 @@
+#include <stdio.h>
+long int quadrado(int x);
+float volume(float);
+int main()
+{
+    int num;
+    long int val;
+    float raio;
+    scanf("%d",&num);
+    val = quadrado(num);
+    printf("O quadrado de %d eh %ld\n",num,val);
+    printf("\n Entre com o raio:");
+    scanf("%f",&raio);
+    printf("\n Volume da esfera de raio %f: %f",raio,volume(raio));
+    return (0);
+}
+long int quadrado(int x)
+{
+    long int valor;
+    valor = x*x;
+    return (valor);
+}
+
+float volume(float r)
+{
+  return(4/3*3.1416*r*r*r);  //4.0/3*3.1416*r*r*r
+}

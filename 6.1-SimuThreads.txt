@@ -1,0 +1,72 @@
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+#define TAM 5
+
+clock_t iniciar, parar;
+unsigned long l;
+float soma=0.0, media=0.0;
+int m = 20;
+float CLK_TCK = 1000000.0, total;
+int i, aux, cont;
+int num[TAM] = {2, 5, 3, 1, 4};
+pthread_t A, B, C;
+
+void *threadA(){
+//Algoritmo de ordenação Bubblesort
+for(cont = 1; cont<TAM; cont++){
+	for(i=0; i<TAM-1; i++){
+		if(num[i]>num[i+1]){
+			aux = num[i];
+			num[i] = num[i+1];
+			num[i+1] = aux;
+		}
+	}
+}
+
+void *threadB(){
+printf("Vetor Ordenado:\n");
+for(i=0; i<TAM; i++){
+	printf("%d", num[i]);
+}
+}
+
+
+
+
+int main(void){
+setlocale(LC_ALL, "Portuguese");
+
+for(l=0; l<m; l++){ //o número de simuações
+
+iniciar = clock(); //pega o tempo antes de iniciar a tarefa
+
+//tarefa
+printf("\nVetor Desordenado:\n");
+for(i=0; i<TAM; i++)
+	printf("%d ", num[i]);
+	printf("\n");
+pthread_create(&A, NULL, threadA, NULL);
+pthread_create(&B, NULL, threadB, NULL);
+
+pthread_join(A, NULL);
+pthread_join(B, NULL);
+printf("\n");
+num[0] = 2; num[1] = 5; num[2] = 3; num[3] = 1; num[4] = 4;
+
+parar = clock(); //pega o tempo ao final da tarefa
+
+total = (parar - iniciar) / CLK_TCK;
+soma = soma + total;
+printf("\nO laço %ld precisou de %f segundos\n",(l+1), total);
+}
+
+media = soma/m;
+printf("\nTempo Total[THREAD]: %f segundos \nTempo Médio[THREAD]: %f segundos\n\n", soma, media);
+
+return 0;
+}
+}

@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+void troca(int *a,int *b);
+int main()
+{
+    int x,y;
+    scanf("%d%d",&x,&y);
+    printf("enderecos\n");
+    printf("%p\n%p\n",&x,&y);
+    printf("tam. bytes: %d\n",sizeof(x));
+    printf("x: %d   y: %d\n",x,y);
+    troca(&x,&y);
+    printf("x: %d   y: %d\n",x,y);
+    return 0;
+}
+void troca(int *a,int *b)
+{
+    printf("%p\n%p\n",a,b);
+    int aux;
+    aux = *a;
+    *a = *b;
+    *b = aux;
+}

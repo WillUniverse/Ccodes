@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main()
+{
+    int v[15];
+    int i,ma,me,pmaior,pmenor;
+    ma = 0; me = 0; pmaior = 0; pmenor = 0;
+
+    for (i=0; i<15; i++) {
+        printf ("Entre com os valores: ");
+        scanf ("%d", &v[i]);  }
+    for (i=0; i<15; i++)
+        printf (" %d ", v[i]);
+
+    for (i=0; i<15; i++){
+     if (i==0){
+     ma = v[i];
+     me = v[i];
+     pmaior = i;
+     pmenor = i;
+     }
+     else  {
+       if (v[i]>ma) {
+         ma = v[i];
+         pmaior = i; }
+       if (v[i]<me) {
+         me = v[i];
+         pmenor = i; }
+
+     }}
+
+     printf ("\n");
+     printf ("\n%d e o maior numero na posicao %d.", ma, pmaior);
+     printf ("\n%d e o menor numero na posicao %d.", me, pmenor);
+     getch();
+     system ("pause");
+        return 0;
+}

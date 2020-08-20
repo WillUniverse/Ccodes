@@ -1,0 +1,23 @@
+setlocale(LC_ALL,"Portuguese");
+    int min,me,max, aux;
+    scanf("%d%d%d", &min, &me, &max);
+    if (min > me || min >max){
+        if(me < max){
+            aux = min;
+            min = me;
+            me = aux;
+        }
+        else{
+            aux = min;
+            min = max;
+            max = aux;
+        }
+    }
+
+    if(me > max){
+        aux = me;
+        me = max;
+        max = aux;
+    }
+
+    printf("%d %d %d\n", min, me, max);

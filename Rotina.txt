@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <conio.h>
+
+int soma (int x , int y) {
+printf("\nRecebi x: %d\n", x);
+printf("\nRecebi y: %d\n", y);
+printf("\nA soma entre os dois é: %d\n", x + y);
+
+}
+int main()
+{
+   setlocale(LC_ALL, "Portuguese");
+   int x,y;
+   x = 1;
+   y = 1;
+   soma(x , y);
+   x= 5;
+   y= 5;
+   soma(x , y);
+
+    getch();
+    system("PAUSE");
+    return 0;
+}

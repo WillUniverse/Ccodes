@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+void concatenar(FILE *arq1, FILE *arq2, FILE *arq3);
+
+FILE *arq1;
+arq1 = fopen ("arquivo1.txt", "w");
+
+fprintf(arq1,"Tibia.\nRagnarok.\nThe Duel.\n");
+
+fclose(arq1);
+
+arq1 = fopen ("arquivo1.txt", "r");
+
+if(arq1 == NULL) {
+printf("O arquivo nao pode ser aberto \n");
+exit(0);
+}
+
+char t[100];
+printf("#############\n");
+printf("Arquivo 1:\n");
+while(fgets(t, 100, arq1) != NULL) {
+printf("%s", t);
+}
+fclose(arq1);
+
+FILE *arq2;
+arq2 = fopen ("arquivo2.txt", "w");
+
+fprintf(arq2,"League of Legends.\nFortnite.\nCSGO.\n");
+
+fclose(arq2);
+
+arq2 = fopen ("arquivo2.txt", "r");
+
+if(arq2 == NULL) {
+printf("O arquivo nao pode ser aberto \n");
+exit(0);
+}
+
+char t2[100];
+printf("#############\n");
+printf("Arquivo 2:\n");
+while(fgets(t2, 100, arq2) != NULL) {
+printf("%s", t2); }
+fclose(arq2);
+
+arq1 = fopen ("arquivo1.txt", "r");
+
+if(arq1 == NULL) {
+printf("O arquivo nao pode ser aberto \n");
+exit(0);
+}
+
+
+arq2 = fopen ("arquivo2.txt", "r");
+
+if(arq2 == NULL) {
+printf("O arquivo nao pode ser aberto \n");
+exit(0);
+}
+
+
+
+FILE *arq3;
+arq3 = fopen("arquivo3.txt", "w");
+printf("#############\n");
+printf("Arquivo 3:\n");
+concatenar(arq1, arq2, arq3);
+fclose(arq1);
+fclose(arq2);
+fclose(arq3);
+
+return 0;
+}
+
+
+void concatenar(FILE *arq1, FILE *arq2, FILE *arq3){
+
+char t3[100];
+
+while(fgets(t3, 100, arq1) != NULL){
+fputs(t3, arq3);
+printf("%s", t3);
+}
+
+while (fgets(t3, 100, arq2) != NULL) {
+fputs (t3, arq3);
+printf("%s", t3);
+}
+
+}
+
+

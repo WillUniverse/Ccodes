@@ -1,0 +1,29 @@
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main(void){
+setlocale(LC_ALL,"Portuguese");
+pid_t z;
+z = fork();
+
+if(z != 0){
+	printf("\nPID do avô: %d\n", getpid());
+	sleep(4);
+	exit(0);
+}
+
+z = fork();
+
+if(z != 0){
+	printf("\nPID do pai: %d e PPID: %d\n", getpid(), getppid());
+}
+else{
+	sleep(2);
+	printf("\nPID do filho: %d e PPID: %d\n", getpid(), getppid());
+}
+
+return 0;
+}

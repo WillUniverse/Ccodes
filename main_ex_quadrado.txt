@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+long int quadrado(int x);
+int main()
+{
+    int num;
+    long int val;
+    printf("valor: ");
+    scanf("%d",&num);
+    val = quadrado(num);
+    printf("quadrado: %ld\n",val);
+    return 0;
+}
+
+long int quadrado(int y)
+{
+    return y*y;
+}

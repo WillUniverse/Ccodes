@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <pthread.h>
+#define N 10
+
+int vet[N] = {5,6,4,8,1,7,3,2,0,9};
+int vetN[N];
+int n = 0;
+
+void * threadA(){
+int aux,vetA[N];
+
+for(int j = 0; j < N; j++){
+	vetA[j] = vet[j];
+}
+
+for(int i = 0; i < N/2; i++){
+	n = 0;
+	aux = vetA[0];
+	
+	for(int j = 0; j < N; j++){
+		if(vetA[j] > aux){
+			n = j;
+			aux = vetA[j];
+		}
+	} 
+vetN[i] = aux;
+vetA[n] = 0;
+
+}
+}
+
+void * threadB(){
+int n = 0, aux , vetA[N];
+
+for(int j = 0; j < N; j++){
+	vetA[j] = vet[j];
+}
+
+for(int i = N; i > N/2; i--){
+	n = 0;
+	aux = vetA[0];
+
+	for(int j = 0; j < N; j++){
+		if(vetA[j] < aux){
+			n = j;
+			aux = vetA[j];
+}
+}
+
+vetN[i-1] = aux;
+vetA[n] = 100;
+
+}
+}
+
+void main(){
+printf("Vetor desordenado: ");
+for (n = 0; n < N; n++){
+	printf("%d ", vet[n]);
+}
+
+pthread_t threadA_id;
+pthread_t threadB_id;
+
+pthread_create(&threadB_id, NULL, threadB, NULL);
+pthread_create(&threadA_id, NULL, threadA, NULL);
+
+pthread_join(threadA_id, NULL);
+pthread_join(threadB_id, NULL);
+
+printf("\nVetor ordenado: ");
+for(int j = 0; j < N; j++){
+	printf("%d ", vetN[j]);
+}
+printf("\n");
+}

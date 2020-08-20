@@ -1,0 +1,17 @@
+setlocale(LC_ALL, "Portuguese");
+    int antes, atual, prox, serie;
+    printf("Entre com um valor a ser fatorado:");
+    scanf("%d", &serie);
+
+    antes = 1;
+    atual = 1;
+    printf("%d %d", antes, atual);
+
+    while(atual <= serie){
+        prox = antes + atual;
+        if (prox <= serie)
+            printf(" %d", prox);
+
+    antes = atual;
+    atual = prox;
+}
